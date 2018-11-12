@@ -38,6 +38,50 @@ alert(x * 2);*/
 
 // Цикл for
 
-for(var x = 1; x < 100; x++){
+/*for(var x = 1; x < 100; x++){
 	console.log(x);
+}*/
+
+// Задание 1
+/*var a = +prompt("Введи 1-ое число");
+var b = +prompt("Введи 2-ое число");
+var c = +prompt("Введи 3-е число");
+var res;
+
+while(isNaN(a) || isNaN(b) isNaN(c)) {
+	a = +prompt("Введи 1-ое число");
+	b = +prompt("Введи 2-ое число");
+	c = +prompt("Введи 3-ое число");
 }
+
+if((x == y) (x == z) (y == z)){
+	res = "Невозможно найти среднее"
+} 
+
+if(((a > b) && (a < c)) || ((a < b) && (a > c))){
+	res = a;
+} else if(((b > a) && (b < c)) || ((b < a) && (b > c))){
+	res = b;
+} else {
+	res = c;
+}
+
+alert(res);*/
+
+//Задание 2. Арифметический тренажер. Рандомные числа от 3 до 15
+for(var i = 10; i > 0; i--){
+	var x = Math.floor(Math.random()*13) + 3;
+	var y = Math.floor(Math.random()*13) + 3;
+	var res = x * y;
+	var answer = +prompt("Сколько будет " + x + " * " + y);
+	if(res == answer){ 
+		console.log(true);
+	} else{
+		console.log("No" + x + "*" + y + "=" + res);
+	} 
+}
+
+
+
+
+
