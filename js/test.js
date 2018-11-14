@@ -103,7 +103,7 @@ for(var i = 10; i > 0; i--){
 
 // Задание 3.2. Функция
 
-function mathOp (a, b, op) {
+/*function mathOp (a, b, op) {
 	var res;
 	if(op == "+") {
 		res = a + b;
@@ -123,8 +123,52 @@ console.log(mathOp(4, 2, "+"));
 console.log(mathOp(4, 2, "-"));
 console.log(mathOp(6, 2, "/"));
 console.log(mathOp(4, 2, "*"));
-console.log(mathOp(4, 2, "."));
+console.log(mathOp(4, 2, "."));*/
 
+// Задание 4. Арифметический тренажер продвинутый
+function randomInt(min, max){
+	var length = max - min + 1;
+	var rand = Math.floor(Math.random() * length) + min;
+	return rand;
+}
 
+function mathOp (a, b, op) {
+	var res;
+	if(op == "+") {
+		res = a + b;
+	} else if(op == "-") {
+		res = a - b;
+	} else if(op == "*") {
+		res = a * b;
+	} else if(op == "/") {
+		res = a / b;
+	} else {
+		alert("Stop it, stupid girl!");
+	}
+	return res;
+}
+
+alert("Если получаешь дробное число, вводи 2 знака после запятой")
+
+var opMas = ["+", "-", "/", "*"];
+var answerStr, answer;
+
+for(var i = 10; i > 0; i--){
+	var x = randomInt(3, 15);
+	var y = randomInt(3, 15);
+	var op = opMas[randomInt(0, 3)];
+	var res = mathOp(x, y, op);
+	do {
+		answerStr = prompt("Сколько будет " + x + op + y);
+		answer = +answerStr;
+	} while(answerStr == "" || isNaN(answer));
+	
+
+	if(res.toFixed(2) == answer.toFixed(2)){ 
+		console.log(true);
+	} else{
+		console.log("No" + x + op + y + "=" + res);
+	} 
+}
 
 
