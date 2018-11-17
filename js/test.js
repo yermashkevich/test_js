@@ -172,6 +172,13 @@ for(var i = 10; i > 0; i--){
 }*/
 
 // Работа с массивами
+window.onload = function(){
+	document.querySelector(".btnStart").onclick = function(){
+		training();
+	}
+
+}
+
 function randomInt(min, max){
 	var length = max - min + 1;
 	var rand = Math.floor(Math.random() * length) + min;
@@ -194,33 +201,38 @@ function mathOp (a, b, op) {
 	return res;
 }
 
-alert("Если получаешь дробное число, вводи 2 знака после запятой")
+function training() {
 
-var opMas = ["+", "-", "/", "*"];
-var x, y, op, res, answerStr, answer, good = 0, error = 0, errors = [];
+	alert("Если получаешь дробное число, вводи 2 знака после запятой")
 
-for(var i = 4; i > 0; i--){
-	x = randomInt(3, 15);
-	y = randomInt(3, 15);
-	op = opMas[randomInt(0, 3)];
-	res = mathOp(x, y, op);
-	do {
-		answerStr = prompt("Сколько будет " + x + op + y);
-		answer = +answerStr;
-	} while(answerStr == "" || isNaN(answer));
-	
+	var opMas = ["+", "-", "/", "*"];
+	var x, y, op, res, answerStr, answer, good = 0, error = 0, errors = [];
 
-	if(res.toFixed(2) == answer.toFixed(2)){ 
-		good++;
-	} else{
-		error++;
-		errors.push(x + " " + op + " " + y + "=" + res.toFixed(2) + " , а Ваш ответ" + answer);
-	} 
+	for(var i = 4; i > 0; i--){
+		x = randomInt(3, 15);
+		y = randomInt(3, 15);
+		op = opMas[randomInt(0, 3)];
+		res = mathOp(x, y, op);
+		do {
+			answerStr = prompt("Сколько будет " + x + op + y);
+			answer = +answerStr;
+		} while(answerStr == "" || isNaN(answer));
+
+
+		if(res.toFixed(2) == answer.toFixed(2)){ 
+			good++;
+		} else{
+			error++;
+			errors.push(x + " " + op + " " + y + "=" + res.toFixed(2) + " , а Ваш ответ " + answer);
+		} 
+	}
+
+	document.querySelector(".good").innerHTML = good;
+	document.querySelector(".bad").innerHTML = error;
+
+	var divErrors = document.querySelector(".errors");
+	divErrors.innerHTML = "";
+	for(var i = 0; i < errors.length; i++){
+		divErrors.innerHTML += ("<p>" + errors[i] + "</p>");
+	}
 }
-
-for(var i = 0; i < 4; i++){
-	console.log(errors[i]);
-}
-console.log("правильных ответов" + good);
-console.log("неправильных ответов" + error);
-
